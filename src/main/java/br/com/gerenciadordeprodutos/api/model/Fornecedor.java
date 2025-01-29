@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "/fornecedor")
@@ -32,7 +33,10 @@ public class Fornecedor implements Serializable {
     private TipoFornecedorEnum tipoFornecedor;
 
     @Column(name = "criado_em", nullable = false)
-    private LocalDate criadoEm;
+    private LocalDateTime criadoEm;
+
+    @Column(name = "atualizado_em", nullable = false)
+    private LocalDateTime atualizadoEm;
 
     public Long getId() {
         return id;
@@ -74,11 +78,19 @@ public class Fornecedor implements Serializable {
         this.tipoFornecedor = tipoFornecedor;
     }
 
-    public LocalDate getCriadoEm() {
+    public LocalDateTime getCriadoEm() {
         return criadoEm;
     }
 
-    public void setCriadoEm(LocalDate criadoEm) {
+    public void setCriadoEm(LocalDateTime criadoEm) {
         this.criadoEm = criadoEm;
+    }
+
+    public LocalDateTime getAtualizadoEm() {
+        return atualizadoEm;
+    }
+
+    public void setAtualizadoEm(LocalDateTime atualizadoEm) {
+        this.atualizadoEm = atualizadoEm;
     }
 }
