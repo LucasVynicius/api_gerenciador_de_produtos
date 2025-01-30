@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "/fornecedor")
+@Table(name = "fornecedor")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
