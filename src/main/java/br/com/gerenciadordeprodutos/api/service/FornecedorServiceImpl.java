@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -25,7 +26,7 @@ public class FornecedorServiceImpl implements FornecedorService{
         fornecedor.setEmail(criarFornecedorRequest.email());
         fornecedor.setCnpj(criarFornecedorRequest.cnpj());
         fornecedor.setTipoFornecedor(criarFornecedorRequest.tipoFornecedor());
-        fornecedor.setCriadoEm(LocalDate.now());
+        fornecedor.setCriadoEm(LocalDateTime.now());
 
         Fornecedor fornecedorCriado = fornecedorRepository.save(fornecedor);
 
