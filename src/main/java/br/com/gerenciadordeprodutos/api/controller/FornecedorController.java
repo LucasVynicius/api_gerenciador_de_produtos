@@ -39,7 +39,7 @@ public class FornecedorController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Fornecedor atualizarFornecedor(@PathVariable Long id,@RequestBody CriarFornecedorRequest criarFornecedorRequest){
+    public Fornecedor atualizarFornecedor(@PathVariable Long id,@Valid @RequestBody CriarFornecedorRequest criarFornecedorRequest){
         return fornecedorService.atualizarFornecedor(id, criarFornecedorRequest);
     }
 

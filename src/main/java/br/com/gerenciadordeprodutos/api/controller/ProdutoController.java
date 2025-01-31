@@ -40,12 +40,12 @@ public class ProdutoController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Produto atualizarProduto(@PathVariable Long id, @RequestBody CriarProdutoRequest criarProdutoRequest){
+    public Produto atualizarProduto(@PathVariable Long id,@Valid @RequestBody CriarProdutoRequest criarProdutoRequest){
         return produtoService.atualizarProduto(id, criarProdutoRequest);
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarProduto(@PathVariable Long id){
         produtoService.deletarProduto(id);
     }

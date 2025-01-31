@@ -3,6 +3,8 @@ package br.com.gerenciadordeprodutos.api.model;
 import br.com.gerenciadordeprodutos.api.enums.TipoFornecedorEnum;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -32,9 +34,11 @@ public class Fornecedor implements Serializable {
     @Enumerated(EnumType.STRING)
     private TipoFornecedorEnum tipoFornecedor;
 
+    @CreationTimestamp
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm;
 
+    @UpdateTimestamp
     @Column(name = "atualizado_em", nullable = false)
     private LocalDateTime atualizadoEm;
 

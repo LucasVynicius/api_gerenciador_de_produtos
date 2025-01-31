@@ -51,6 +51,9 @@ public class FornecedorServiceImpl implements FornecedorService{
         fornecedorExistente.setEmail(criarFornecedorRequest.email());
         fornecedorExistente.setCnpj(criarFornecedorRequest.cnpj());
         fornecedorExistente.setTipoFornecedor(criarFornecedorRequest.tipoFornecedor());
+        fornecedorExistente.setAtualizadoEm(LocalDateTime.now());
+
+
 
         return fornecedorRepository.save(fornecedorExistente);
     }
