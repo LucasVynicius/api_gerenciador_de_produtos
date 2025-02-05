@@ -1,16 +1,12 @@
 package br.com.gerenciadordeprodutos.api.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "endereco")
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class Endereco implements Serializable {
 
@@ -41,4 +37,19 @@ public class Endereco implements Serializable {
 
     @Column(name = "cep", nullable = false, length = 20)
     private String cep;
+
+    public Endereco(){}
+
+    public Endereco(Long id, String logradouro, String numero, String complemento, String bairro, String cidade, String estado, String pais, String cep) {
+        this.id = id;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+        this.cep = cep;
+    }
+
 }

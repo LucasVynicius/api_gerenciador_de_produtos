@@ -38,6 +38,10 @@ public class Fornecedor implements Serializable {
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "endereco_id", referencedColumnName = "id")
+    private Endereco endereco;
+
     @UpdateTimestamp
     @Column(name = "atualizado_em", nullable = false)
     private LocalDateTime atualizadoEm;
@@ -96,5 +100,13 @@ public class Fornecedor implements Serializable {
 
     public void setAtualizadoEm(LocalDateTime atualizadoEm) {
         this.atualizadoEm = atualizadoEm;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }

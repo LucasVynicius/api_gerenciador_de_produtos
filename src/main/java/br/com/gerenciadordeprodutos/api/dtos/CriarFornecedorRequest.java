@@ -1,6 +1,7 @@
 package br.com.gerenciadordeprodutos.api.dtos;
 
 import br.com.gerenciadordeprodutos.api.enums.TipoFornecedorEnum;
+import br.com.gerenciadordeprodutos.api.model.Endereco;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,6 +20,11 @@ public record CriarFornecedorRequest(
         String cnpj,
 
         @NotNull(message = " O tipo do forncedor é obrigatório")
-        TipoFornecedorEnum tipoFornecedor
+        TipoFornecedorEnum tipoFornecedor,
+
+
+        EnderecoDTO endereco
+
+
 ) {
 }
