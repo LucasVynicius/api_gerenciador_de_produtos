@@ -43,7 +43,6 @@ public class FornecedorServiceImpl implements FornecedorService{
         fornecedor.setCriadoEm(LocalDateTime.now());
         fornecedor.setEndereco(endereco);
 
-
         Fornecedor fornecedorCriado = fornecedorRepository.save(fornecedor);
 
         return new FornecedorCriadoResponse("Fornecedor Criado com Sucesso! ", fornecedorCriado.getId());
@@ -61,13 +60,29 @@ public class FornecedorServiceImpl implements FornecedorService{
 
     @Override
     public Fornecedor atualizarFornecedor(Long id, CriarFornecedorRequest criarFornecedorRequest) {
-        Fornecedor fornecedorExistente = fornecedorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não escontrado"));
+        Fornecedor fornecedorExistente = fornecedorRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não escontrado"));
+
+        Endereco endereco = fornecedorExistente.getEndereco();
+        if (endereco == null){
+            endereco = new Endereco();
+        }
+
+        endereco.setLogradouro(criarFornecedorRequest.endereco().logradouro());
+        endereco.setNumero(criarFornecedorRequest.endereco().numero());
+        endereco.setComplemento(criarFornecedorRequest.endereco().complemento());
+        endereco.setBairro(criarFornecedorRequest.endereco().bairro());
+        endereco.setCidade(criarFornecedorRequest.endereco().cidade());
+        endereco.setEstado(criarFornecedorRequest.endereco().estado());
+        endereco.setPais(criarFornecedorRequest.endereco().pais());
+        endereco.setCep(criarFornecedorRequest.endereco().cep());
 
         fornecedorExistente.setNome(criarFornecedorRequest.nome());
         fornecedorExistente.setEmail(criarFornecedorRequest.email());
         fornecedorExistente.setCnpj(criarFornecedorRequest.cnpj());
         fornecedorExistente.setTipoFornecedor(criarFornecedorRequest.tipoFornecedor());
         fornecedorExistente.setAtualizadoEm(LocalDateTime.now());
+        fornecedorExistente.setEndereco(endereco);
 
 
 
